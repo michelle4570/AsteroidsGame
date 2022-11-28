@@ -29,5 +29,12 @@ public double getCenterX(){
 public double getCenterY(){
   return myCenterY;
 }
-
+public void hyperspace(){
+  myCenterX = (int)(Math.random()*600);
+  myCenterY = (int)(Math.random()*600);
+  myPointDirection = (double)(Math.random()*360);
+  myXspeed=0;
+  myYspeed = 0;
+}
+  
 }
