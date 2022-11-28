@@ -1,4 +1,3 @@
-//your variable declarations here
 Star [] ow;
 Spaceship bob;
 public void setup() 
@@ -28,6 +27,9 @@ if(keyPressed){
   }
   if(key=='w' || key == 'W'){
   bob.accelerate(0.2);
+  }
+  if(key=='h'||key=='H'){
+    bob.hyperspace();
   }
 }
 }
