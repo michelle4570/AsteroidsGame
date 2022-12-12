@@ -1,5 +1,6 @@
 Star [] ow;
 Spaceship bob;
+ArrayList<Bullet> harry = new ArrayList<Bullet>();
 ArrayList <Asteroid> Pals = new ArrayList<Asteroid>();
 public void setup() 
 {
@@ -21,7 +22,17 @@ public void draw(){
     }
   bob.move();
   bob.show();
-
+  for (int i=0; i<harry.size(); i++){
+    harry.get(i).show();
+    harry.get(i).move();
+  }  
+   for (int i = 0; i<Pals.size(); i++){
+    Pals.get(i).show();
+    Pals.get(i).move();
+  float distance = dist((float)Pals.get(i).getCenterX(),(float)Pals.get(i).getCenterY(), (float)bob.getCenterX(),(float)bob.getCenterY());
+    if (distance < 30) 
+      Pals.remove(i);
+    }
 if(keyPressed){
   if (key == 'a' || key == 'A'){
     bob.turn(-10);
@@ -35,13 +46,19 @@ if(keyPressed){
   if(key=='h'||key=='H'){
     bob.hyperspace();
   }
-  }
-  for (int i = 0; i<Pals.size(); i++){
-    Pals.get(i).show();
-    Pals.get(i).move();
-  float distance = dist((float)Pals.get(i).getCenterX(),(float)Pals.get(i).getCenterY(), (float)bob.getCenterX(),(float)bob.getCenterY());
+  if(key==' '){
+    harry.add(new Bullet(bob));
+  } 
+    
+  for (int j = 0; j<harry.size(); j++){
+      for (int i = 0; i<Pals.size(); i++){
+  float distance = dist((float)harry.get(j).getCenterX(),(float)harry.get(j).getCenterY(), (float)Pals.get(i).getCenterX(),(float)Pals.get(i).getCenterY());
     if (distance < 20){
       Pals.remove(i);
+      harry.remove(j);
+      break;
     }
+  }
+}
 }
 }
